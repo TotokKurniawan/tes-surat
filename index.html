@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Untukmu, Cinta Hatiku ❤️</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(-45deg, #ff6b9d, #ffc3a0, #ff9a9e, #fecfef);
+        background-size: 400% 400%;
+        animation: gradientShift 8s ease infinite;
+        overflow-x: hidden;
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .container {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+      }
+
+      .hearts {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .heart {
+        position: absolute;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 20px;
+        animation: floatUp 6s linear infinite;
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100px) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .content {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(20px);
+        border-radius: 30px;
+        padding: 60px 40px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        max-width: 600px;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1 {
+        font-family: "Dancing Script", cursive;
+        font-size: 3.5em;
+        color: white;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        animation: pulse 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes pulse {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(1.05);
+        }
+      }
+
+      .subtitle {
+        font-size: 1.3em;
+        color: white;
+        margin-bottom: 30px;
+        font-weight: 300;
+        opacity: 0.9;
+      }
+
+      .love-message {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 25px;
+        border-radius: 20px;
+        margin: 30px 0;
+        color: white;
+        font-size: 1.1em;
+        line-height: 1.6;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .interactive-heart {
+        font-size: 4em;
+        color: #ff6b9d;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 20px 0;
+        display: inline-block;
+        animation: heartbeat 1.5s ease-in-out infinite;
+      }
+
+      @keyframes heartbeat {
+        0% {
+          transform: scale(1);
+        }
+        14% {
+          transform: scale(1.1);
+        }
+        28% {
+          transform: scale(1);
+        }
+        42% {
+          transform: scale(1.1);
+        }
+        70% {
+          transform: scale(1);
+        }
+      }
+
+      .interactive-heart:hover {
+        transform: scale(1.2);
+        filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.8));
+      }
+
+      .love-quotes {
+        display: none;
+        background: rgba(255, 255, 255, 0.25);
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 20px;
+        color: white;
+        font-style: italic;
+        animation: slideIn 0.5s ease-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .date-counter {
+        background: linear-gradient(45deg, #ff6b9d, #ffc3a0);
+        padding: 20px;
+        border-radius: 15px;
+        margin: 25px 0;
+        color: white;
+        font-weight: 600;
+        font-size: 1.2em;
+        box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+      }
+
+      .sparkles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .sparkle {
+        position: absolute;
+        color: gold;
+        animation: twinkle 2s infinite;
+      }
+
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0;
+          transform: scale(0);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .music-note {
+        position: fixed;
+        font-size: 30px;
+        color: rgba(255, 255, 255, 0.6);
+        animation: musicFloat 4s linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes musicFloat {
+        0% {
+          transform: translateY(100vh) translateX(0px);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100px) translateX(50px);
+          opacity: 0;
+        }
+      }
+
+      .photo-gallery {
+        margin: 30px 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .photo-frame {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 15px;
+        border-radius: 20px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .photo-frame:hover {
+        transform: scale(1.05);
+        box-shadow: 0 20px 40px rgba(255, 107, 157, 0.3);
+      }
+
+      .photo-frame img {
+        width: 200px;
+        height: 200px;
+        border-radius: 15px;
+        object-fit: cover;
+        display: block;
+        border: 3px solid rgba(255, 255, 255, 0.5);
+      }
+
+      .photo-caption {
+        color: white;
+        text-align: center;
+        margin-top: 10px;
+        font-size: 0.9em;
+        opacity: 0.9;
+      }
+
+      .music-controls {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 20px;
+        border-radius: 15px;
+        margin: 20px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .music-controls button {
+        background: linear-gradient(45deg, #ff6b9d, #ffc3a0);
+        border: none;
+        padding: 12px 25px;
+        border-radius: 25px;
+        color: white;
+        font-size: 1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+      }
+
+      .music-controls button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+      }
+
+      .volume-control {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: white;
+      }
+
+      .volume-control input[type="range"] {
+        width: 100px;
+        height: 5px;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.3);
+        outline: none;
+        cursor: pointer;
+      }
+
+      .volume-control input[type="range"]::-webkit-slider-thumb {
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #ff6b9d;
+        cursor: pointer;
+        border: 2px solid white;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        .content {
+          padding: 40px 20px;
+          margin: 20px;
+        }
+
+        h1 {
+          font-size: 2.5em;
+        }
+
+        .subtitle {
+          font-size: 1.1em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hearts" id="hearts"></div>
+    <div class="sparkles" id="sparkles"></div>
+
+    <div class="container">
+      <div class="content">
+        <!-- Audio element untuk backsound -->
+        <audio id="backgroundMusic" loop autoplay>
+          <!-- Romantic Piano Music -->
+          <source
+            src="https://www.bensound.com/bensound-music/bensound-love.mp3"
+            type="audio/mpeg"
+          />
+          <!-- Alternative romantic music -->
+          <source
+            src="https://www.soundjay.com/misc/sounds/romantic-piano-01.mp3"
+            type="audio/mpeg"
+          />
+          <!-- Fallback local romantic tune (simple piano notes) -->
+        </audio>
+
+        <!-- Input file tersembunyi untuk upload foto -->
+        <input
+          type="file"
+          id="photoInput"
+          accept="image/*"
+          class="hidden"
+          onchange="uploadPhoto(event)"
+        />
+
+        <h1>Untuk Sayangku Khoirunnisa Hibatillah 💕</h1>
+        <p class="subtitle">
+          Semoga selalu sehat dan semangat bekerja hari ini
+        </p>
+
+        <div class="love-message">
+          <p>
+            Sayang, semoga hari ini penuh berkah ya. Jangan lupa jaga kesehatan
+            ya, minum air putih yang cukup, istirahat yang cukup, dan jangan
+            terlalu memaksain diri saat bekerja. Aku doakan semoga cepat sembuh
+            dan selalu sehat. Ingat, aku selalu di sini untukmu! 💪✨
+          </p>
+        </div>
+
+        <div class="interactive-heart" id="heart" onclick="showLove()">❤️</div>
+
+        <div class="love-quotes" id="quotes">
+          <p>
+            "Cinta sejati tidak pernah berakhir. Kekasih mungkin pergi, tapi
+            cinta tetap ada selamanya." 💫
+          </p>
+        </div>
+
+        <div class="photo-gallery">
+          <div class="photo-frame">
+            <img src="tes.jpg" alt="Foto Kita" id="ourPhoto" />
+            <div class="photo-caption">Kenangan Terindah Kita 📸</div>
+          </div>
+        </div>
+
+        <div class="date-counter" id="counter">
+          💝 Hari ini adalah hari ke-<span id="days"></span> kita bersama 💝
+        </div>
+
+        <div class="music-controls">
+          <button id="playBtn" onclick="toggleMusic()">🎵 Play Music</button>
+          <div class="volume-control">
+            <label for="volumeSlider">🔊</label>
+            <input
+              type="range"
+              id="volumeSlider"
+              min="0"
+              max="100"
+              value="50"
+              onchange="changeVolume()"
+            />
+          </div>
+        </div>
+
+        <p
+          style="color: white; margin-top: 20px; font-size: 1.1em; opacity: 0.9"
+        >
+          Klik hati di atas untuk surprise! 💖<br />
+          <small style="opacity: 0.7"
+            >Upload foto kalian dengan klik gambar di atas</small
+          >
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // Membuat hati-hati jatuh
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = Math.random() > 0.5 ? "❤️" : "💖";
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        document.getElementById("hearts").appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 6000);
+      }
+
+      // Membuat kilau bintang
+      function createSparkle() {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.innerHTML = "✨";
+        sparkle.style.left = Math.random() * 100 + "%";
+        sparkle.style.top = Math.random() * 100 + "%";
+        sparkle.style.animationDelay = Math.random() * 2 + "s";
+        document.getElementById("sparkles").appendChild(sparkle);
+
+        setTimeout(() => {
+          sparkle.remove();
+        }, 2000);
+      }
+
+      // Membuat kilau khusus untuk foto
+      function createPhotoSparkle() {
+        const photoFrame = document.querySelector(".photo-frame");
+        const rect = photoFrame.getBoundingClientRect();
+
+        for (let i = 0; i < 5; i++) {
+          const sparkle = document.createElement("div");
+          sparkle.className = "sparkle";
+          sparkle.innerHTML = "✨";
+          sparkle.style.position = "fixed";
+          sparkle.style.left = rect.left + Math.random() * rect.width + "px";
+          sparkle.style.top = rect.top + Math.random() * rect.height + "px";
+          sparkle.style.animationDelay = i * 100 + "ms";
+          sparkle.style.zIndex = "1000";
+          document.body.appendChild(sparkle);
+
+          setTimeout(() => {
+            sparkle.remove();
+          }, 2000);
+        }
+      }
+
+      // Membuat not musik
+      function createMusicNote() {
+        const note = document.createElement("div");
+        note.className = "music-note";
+        const notes = ["♪", "♫", "♬", "♩"];
+        note.innerHTML = notes[Math.floor(Math.random() * notes.length)];
+        note.style.left = Math.random() * 100 + "%";
+        note.style.animationDuration = Math.random() * 2 + 3 + "s";
+        document.body.appendChild(note);
+
+        setTimeout(() => {
+          note.remove();
+        }, 5000);
+      }
+
+      // Fungsi ketika hati diklik
+      function showLove() {
+        const quotes = document.getElementById("quotes");
+        quotes.style.display = "block";
+
+        // Buat ledakan hati
+        for (let i = 0; i < 10; i++) {
+          setTimeout(createHeart, i * 100);
+        }
+
+        // Buat kilau
+        for (let i = 0; i < 5; i++) {
+          setTimeout(createSparkle, i * 200);
+        }
+
+        // Ganti quotes setiap klik dengan pesan semangat dan kesehatan
+        const loveQuotes = [
+          "Khoirunnisa sayang, jangan lupa minum vitamin dan istirahat yang cukup ya. Kesehatan kamu prioritas utama! 💊",
+          "Semangat kerja hari ini Khoirunnisa! Tapi ingat, jangan sampai lupa makan dan minum air putih. 💼💧",
+          "Khoirunnisa, jika lelah jangan dipaksakan. Istirahat dulu, aku akan selalu menunggu sampai kamu pulih. 🌙",
+          "Semoga lekas sembuh sayang. Minum obat teratur, banyak istirahat, dan jangan stress ya Khoirunnisa. 🏥💕",
+          "Khoirunnisa Hibatillah, kamu kuat! Aku yakin kamu bisa melewati hari ini dengan baik. Jaga diri ya! 🌟",
+        ];
+
+        const randomQuote =
+          loveQuotes[Math.floor(Math.random() * loveQuotes.length)];
+        quotes.innerHTML = '<p>"' + randomQuote + '"</p>';
+      }
+
+      // Hitung hari bersama (mulai dari tanggal yang bisa disesuaikan)
+      function updateCounter() {
+        const startDate = new Date("2024-01-01"); // Ganti dengan tanggal mulai kalian
+        const today = new Date();
+        const diffTime = Math.abs(today - startDate);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        document.getElementById("days").textContent = diffDays;
+      }
+
+      // Fungsi untuk memutar/menghentikan musik
+      let isPlaying = true; // Set ke true karena autoplay
+      const audio = document.getElementById("backgroundMusic");
+      const playBtn = document.getElementById("playBtn");
+
+      function toggleMusic() {
+        if (isPlaying) {
+          audio.pause();
+          playBtn.innerHTML = "🎵 Play Music";
+          isPlaying = false;
+        } else {
+          audio.volume = document.getElementById("volumeSlider").value / 100;
+          audio.play().catch((e) => {
+            // Jika audio gagal karena browser policy, buat simple tone
+            createSimpleRomanticTone();
+            playBtn.innerHTML = "🎵 Music On";
+          });
+          playBtn.innerHTML = "⏸️ Pause Music";
+          isPlaying = true;
+        }
+      }
+
+      // Buat nada romantis sederhana menggunakan Web Audio API
+      function createSimpleRomanticTone() {
+        if (
+          typeof AudioContext !== "undefined" ||
+          typeof webkitAudioContext !== "undefined"
+        ) {
+          const audioContext = new (window.AudioContext ||
+            window.webkitAudioContext)();
+          const oscillator = audioContext.createOscillator();
+          const gainNode = audioContext.createGain();
+
+          oscillator.connect(gainNode);
+          gainNode.connect(audioContext.destination);
+
+          // Nada lembut romantis (piano-like)
+          oscillator.type = "sine";
+          oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime); // C5
+
+          gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+          gainNode.gain.linearRampToValueAtTime(
+            0.1,
+            audioContext.currentTime + 0.1
+          );
+          gainNode.gain.linearRampToValueAtTime(
+            0,
+            audioContext.currentTime + 1
+          );
+
+          oscillator.start(audioContext.currentTime);
+          oscillator.stop(audioContext.currentTime + 1);
+        }
+      }
+
+      // Auto-start musik saat halaman dimuat
+      window.addEventListener("load", function () {
+        setTimeout(() => {
+          audio.volume = 0.3; // Volume awal rendah
+          audio.play().catch((e) => {
+            // Jika autoplay diblokir, ubah tombol
+            playBtn.innerHTML = "🎵 Play Music";
+            isPlaying = false;
+          });
+        }, 1000);
+      });
+
+      // Fungsi untuk mengubah volume
+      function changeVolume() {
+        const volume = document.getElementById("volumeSlider").value / 100;
+        audio.volume = volume;
+      }
+
+      // Fungsi untuk upload foto
+      function uploadPhoto(event) {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("ourPhoto").src = e.target.result;
+
+            // Buat efek kilau khusus untuk foto saat berubah
+            createPhotoSparkle();
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+
+      // Event listener untuk klik foto
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("ourPhoto")
+          .addEventListener("click", function () {
+            document.getElementById("photoInput").click();
+          });
+      });
+
+      // Inisialisasi
+      setInterval(createHeart, 1000);
+      setInterval(createSparkle, 2000);
+      setInterval(createMusicNote, 3000);
+      updateCounter();
+
+      // Efek saat halaman dimuat
+      window.addEventListener("load", function () {
+        for (let i = 0; i < 3; i++) {
+          setTimeout(createHeart, i * 500);
+        }
+      });
+    </script>
+  </body>
+</html>
